@@ -1,0 +1,36 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>2D Physics</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="drawBackground(4); reset();">
+    <canvas id="bg-4" width="1280" height="800"></canvas>
+
+    <div id=container>
+        <main>
+            <h1>2D Physics</h1>
+            <canvas id="canvas" width="800" height="800"></canvas>
+            <div id="blackdrop"><div id="message">Click and Drag</div></div>
+            <button onclick="reset();" id="reset">Reset</button>
+            Add:&nbsp;<button onclick="addCircle();">&#x25EF;</button>
+            <button onclick="addSquare();">&#x25A2;</button>
+            <button onclick="addTriangle();">&#x25B3;</button>
+            <button onclick="deleteShape();" id="del">Delete Shape</button>
+        </main>
+
+        <nav>
+            <a id="home" href="/index.html">&lt; Home</a>
+            <p>|</p>
+            <a id="how-to" href="how-to.html">How it works &gt;</a>
+        </nav>
+    </div>
+</body>
+
+<script src="/backgrounds.js"></script>
+<script src="physics.js"></script>
+<link rel="stylesheet" href="/core.css">
+<link rel="stylesheet" href="style.css">
+</html>

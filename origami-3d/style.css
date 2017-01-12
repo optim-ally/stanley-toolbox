@@ -1,0 +1,18 @@
+#canvas {
+    width: 60vw;
+    max-height: 98vh;
+    max-width: 98vh;
+    background-color: black;
+    margin: 2vh 0;
+}
+
+h2 {
+    margin: 0;
+    font-size: 2vw;
+}
+
+button {
+    margin: 0 0 1vw;
+    padding: 1vw;
+    font-size: 2vw;
+}

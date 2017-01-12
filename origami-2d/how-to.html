@@ -1,0 +1,58 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How To – Origami Simulator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="drawBackground(4);">
+    <canvas id="bg-4" width="1280" height="800"></canvas>
+
+    <div id=container>
+        <main>
+            <h1>2D Origami Simulator</h1>
+            <p>How it Works</p>
+
+            <div class="how-to">
+                <h2>Motivation</h2>
+                <p>Who would want a paper simulator online when there are probably several sheets of the real thing right next to you, right?</p>
+                <p>This was not intended to be an alternative to real-life folding, nor is it meant as an experimentation tool (it doesn't even save on CO<sub>2</sub> emissions <sup><a href="#ref1">[1]</a></sup>). Rather I would like it to be a precursor to a more advanced, 3D version in which fold sequences can be animated to make instructional or artistic videos. I could not find any evidence online of previous attempts to make this, but did rediscover an old puzzle-game favourite of mine: Bryce Summer's "<a href="http://www.kongregate.com/games/brycesummer/folds-origami-game">Folds</a>." It wasn't immediatly obvious to me how the game worked, so I tried to recreate its mechanics as closely as possible in an effort to find out. I think I was successful.</p>
+
+                <h2>Modelling a Fold</h2>
+                <p>While the action of folding a piece of paper is a simple thing to describe in the physical world, simulating it with code is a little trickier. The method used here is to divide the original sheet along the new crease into two piece, each a polygon defined by its vertex points, then reflecting the vertices of one piece along the crease. If the sheet has already been folded then it will consist of multiple polygons, each of which is split if it intersects the fold line.</p>
+                <p>The crease is defined with two points that are found with simple euclidean geometry. The coordinates of the initial mouse click are saved as <code>(x<sub>1</sub>,y<sub>1</sub>)</code>, while the current mouse position <code>(x<sub>2</sub>,y<sub>2</sub>)</code> is redefined on each subsequent movement. The two points used to define the fold line are</p>
+                <p class="formula">( (x<sub>1</sub>+x<sub>2</sub>)/2 , (y<sub>1</sub>+y<sub>2</sub>)/2 )</p>
+                <p class="formula">( (x<sub>1</sub>+x<sub>2</sub>+y<sub>1</sub>+y<sub>2</sub>)/2 – y1 , (y<sub>1</sub>+y<sub>2</sub>–x<sub>1</sub>–x<sub>2</sub>)/2 + x1 )</p>
+                <p>Both are equidistant to <code>(x<sub>1</sub>,y<sub>1</sub>)</code> and <code>(x<sub>2</sub>,y<sub>2</sub>)</code>. Once the mouse is released, a fold is made along this line.</p>
+                <p>It is important to note that the polygons created will always be convex and therefore intersect the fold line at most twice. A polygon intersecting fewer than two times is left unchanged, otherwise the line divides the vertices between two new polygons and the intersection points are added to each.</p>
+                <p>In deciding which vertices to reflect and which to leave in place we need a quick way of checking whether or not a vertex is on the same side of the fold line as the initial mouse click. We can deduce that a point <code>(x,y)</code> is on the same side of the line as <code>(x<sub>1</sub>,y<sub>1</sub>)</code> if and only if the folowing equation holds:</p>
+                <p class="formula">((p<sub>y</sub>–q<sub>y</sub>)(x–p<sub>x</sub>) + (q<sub>x</sub>–p<sub>x</sub>)(y–p<sub>y</sub>)) &times; ((p<sub>y</sub>–q<sub>y</sub>)(x<sub>1</sub>–p<sub>x</sub>) + (q<sub>x</sub>–p<sub>x</sub>)(x<sub>2</sub>–p<sub>y</sub>)) &gt; 0</p>
+                <p>Where <code>(p<sub>x</sub>,p<sub>y</sub>)</code> and <code>(q<sub>x</sub>,q<sub>y</sub>)</code> are the two known points on the fold line.</p>
+
+                <h2>Undo and Redo</h2>
+                <p>Every time a fold is completed, the current state of polygons and their nodes is saved as the last in an array of all past states. These can then be navigated through with the <code>&lt;</code> and <code>&gt;</code> buttons. During navigation there can be both past and future states existing in the array, but any future states are deleted if a new fold is made. All memory of past or future states is cleared when the "Reset" button is pushed.</p>
+                <p>A major drawback of Javascript in this type of operation is its inability to easily make deep clones. In other words, a command like <code>pastStates.push(currentState)</code> will only create new references to the many objects contained in <code>currentState</code> and so will not remain constant as the current state is changed. Otherwise elegant, via-JSON solutions fail due to some objects containing functions as well as variables. In the end, such copies were constructed manually, creating new, empty objects at each level and copying the non-object variables across one-by-one.</p>
+
+                <h2>Zooming In/Out</h2>
+                <p>The zoom in/out functionality is minimally complicated. The zoom does not affect any of the core functions – it is only known by the mouse locator and polygon drawing functions. The section of the full picture currently being shown is stored as the x,y-coordinates of the upper-left corner along with the side length. Each mouse click is mapped to its coordinates in the fully zoomed-out picture and the inverse function is used to plot the points of each fold vertex while drawing. To avoid confusion, the zoom out button escapes all layers of magnification and returns the view to the full-sized starting point.</p>
+
+                <h2>Length of Code</h2>
+                <p>The simulator runs on under 200 lines of Javascript, and the page has no more than 40 lines of HTML or 20 lines of CSS. The current Javascript file is suspected to have unnecessary variables. Efforts are currently being made to clean these up and streamline the core functions.</p><br/>
+
+                <p>[1] Approx. 100g of CO<sub>2</sub> equivalents to produce 20 sheets of office paper – <a id="ref1" href="http://www.co2list.org/files/carbon.htm">CO<sub>2</sub>List.org</a>, <a href="http://www.twosidesna.org/download/The-carbon-footprint-of-paper-is-not-as-high-as-you-think.pdf">Two Sides Facts</a>; 106g to load 15KB webpage – <a href="http://alistapart.com/article/sustainable-web-design">A List Apart</a>.</p>
+            </div>
+        </main>
+
+        <nav>
+            <a id="home" href="/index.html">&lt;&lt; Home</a>
+            <p>|</p>
+            <a id="how-to" href="index.html">&lt; Back to Origami Simulator</a>
+        </nav>
+    </div>
+</body>
+
+<script src="/backgrounds.js"></script>
+<link rel="stylesheet" href="/core.css">
+<link rel="stylesheet" href="style.css">
+</html>

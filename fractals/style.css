@@ -1,0 +1,19 @@
+body { background-color: aliceblue; }
+
+body canvas {
+    position: inherit;
+    margin: 2vw 0 1vw;
+    height: 50vw;
+    width: 80vw;
+    background-color: aliceblue;
+    z-index: 1;
+}
+
+#container {
+    margin: 0;
+    animation: none;
+}
+
+h2 { display: inline; }
+
+button { font-size: 1.4em; }

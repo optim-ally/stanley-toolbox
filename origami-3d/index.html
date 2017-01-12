@@ -1,0 +1,33 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Stanley – Origami 3D</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="drawBackground(4); reset();">
+    <canvas id="bg-4" width="1280" height="800"></canvas>
+
+    <div id=container>
+        <main>
+            <h1>3D Origami Simulator</h1>
+            <canvas id="canvas" width="800" height="800"></canvas><br/>
+            <h2>Change Grid Spacing:</h2><br/>
+            <input type="range" id="resSelector" min="10" max="24" value="17">
+            <button onclick="reset();">Reset</button>
+        </main>
+
+        <nav>
+            <a id="home" href="/index.html">&lt; Home</a>
+            <p>|</p>
+            <a id="how-to" href="how-to.html">How it works &gt;</a>
+        </nav>
+    </div>
+</body>
+
+<script src="/backgrounds.js"></script>
+<script src="movement.js"></script>
+<link rel="stylesheet" href="/core.css">
+<link rel="stylesheet" href="style.css">
+</html>

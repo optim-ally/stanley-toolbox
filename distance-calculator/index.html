@@ -1,0 +1,70 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Distance Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="drawBackground(3);">
+    <canvas id="bg-3" width="1280" height="800"></canvas>
+
+    <div id=container>
+        <main>
+            <h1>Global Distance Calculator</h1>
+            <p>Countries, Capitals, or Co-ordinates</p>
+            <div id="inputs">
+                <div>
+                    <h2>From</h2>
+                    <div id="from" contenteditable onclick="clearSuggestions()" oninput="suggest('from')"></div>
+                    <div id="from-suggestions">
+                        <div class="from" id="from1" onmousemove="over(0)" onclick="select(0)"></div>
+                        <div class="from" id="from2" onmousemove="over(1)" onclick="select(1)"></div>
+                        <div class="from" id="from3" onmousemove="over(2)" onclick="select(2)"></div>
+                        <div class="from" id="from4" onmousemove="over(3)" onclick="select(3)"></div>
+                        <div class="from" id="from5" onmousemove="over(4)" onclick="select(4)"></div>
+                    </div>
+                </div>
+                <div>
+                    <h2>To</h2>
+                    <div id="to" contenteditable onclick="clearSuggestions()" oninput="suggest('to')"></div>
+                    <div id="to-suggestions">
+                        <div class="to" id="to1" onmousemove="over(0)" onclick="select(0)"></div>
+                        <div class="to" id="to2" onmousemove="over(1)" onclick="select(1)"></div>
+                        <div class="to" id="to3" onmousemove="over(2)" onclick="select(2)"></div>
+                        <div class="to" id="to4" onmousemove="over(3)" onclick="select(3)"></div>
+                        <div class="to" id="to5" onmousemove="over(4)" onclick="select(4)"></div>
+                    </div>
+                </div>
+                <button onclick="findDistance()">Go</button>
+            </div>
+
+            <div id="info">
+                <div><h2 id="distance"></h2></div>
+                <div>
+                    <div id="from-info"></div>
+                    <div id="to-info"></div>
+                </div>
+            </div>
+
+            <div>
+                <img src="images/map.png">
+                <canvas id="map-plot" width="720" height="360"></canvas>
+            </div>
+        </main>
+
+        <nav>
+            <a href="/index.html">&lt; Home</a>
+            <p>|</p>
+            <a href="how-to.html">How it works &gt;</a>
+        </nav>
+    </div>
+</body>
+
+<script src="js/map-data.js"></script>
+<script src="js/distance-calculator.js"></script>
+<script src="js/search.js"></script>
+<script src="/backgrounds.js"></script>
+<link rel="stylesheet" href="/core.css">
+<link rel="stylesheet" href="style.css">
+</html>

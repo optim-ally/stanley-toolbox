@@ -1,0 +1,52 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How To – Spell Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="drawBackground(2);">
+    <canvas id="bg-2" width="1280" height="800"></canvas>
+
+    <div id=container>
+        <main>
+            <h1>Spell Checker</h1>
+            <p>How it Works</p>
+
+            <div class="how-to">
+                <h2>Input Analysis</h2>
+                <p>Every time the input field is altered, either by a key press or a copy-paste, the content is stripped of any formatting and divided into a set of words.</p>
+                <p>Each is then compared against a database of over 15,000 contested spellings and highlighted either blue (British spelling), red (American spelling), or green (common-ground alternative to a contested word).</p>
+
+                <h2>Checking UK/US Spellings</h2>
+                <p>In case you were wondering, I did <b>not</b> type out every contested British or American spelling used by this spell-checker. I used the data of Words Worldwide, whose original list (&copy; Words Worldwide Limited 2009) can be downloaded from <a href="http://www.wordsworldwide.co.uk/articles.php?id=37">their website</a>. The list was passed through a couple of online tools (thanks to Mark Wilton-Jones at <a href="http://www.howtocreate.co.uk/tutorials/jsexamples/syntax/prepareInline.html">howtocreate.com</a> and the folks involved with <a href="https://jsbin.com/?console">JS Bin</a>) before it was usable, but it now lives as a handful of easy-to-use Javascript arrays. If a word is in the "UK" array then it is a British spelling and is highlighted blue etc. There are lists for spellings that are more common in one English variant than the other but are found in both. These are highlighted with fainter blue or red.</p>
+
+                <h2>Highlighting Words</h2>
+                <p>This is where it gets interesting. The input field is a contenteditable div (rather than a text area) so that the content can be changed to contain html tags. The text is essentially cleared from the div and each word of interest is surrounded by a span styled with the relevant background <span class="uk">colour</span> before it is replaced.</p>
+                <p>If you've tried to do something like this before, maybe for a home-made drop-down selection menu, you may have noticed that the cursor will jump to the start of the text whenever the content is altered with Javascript. This is avoided here by actually having <b>two</b> contenteditable divs stacked on top of each other. The front div is edited by the user and feeds text to the <span class="us-">program</span>, which then adds the highlight spans and updates the back div. The front div has an invisible background; the back has invisible text. The front has the text; the back has the <span class="us">colors</span>. Neat, huh?</p>
+
+                <h2>Make UK/US</h2>
+                <p>When one of the bottom buttons is clicked, the contested words in both of the stacked divs are changed to the appropriate variant. Thankfully the cursor-jump problem can now be tolerated. A master array of all spelling variants of all words, 69,417 long and closer to the raw data from <a href="http://www.wordsworldwide.co.uk/articles.php?id=37">Words Worldwide</a>, is used to find the prefered British or American spelling or any agreed-upon spellings in order of popularity.</p>
+                <p><b>Make UK:</b> <span class="uk-">Anglicise</span> or <span class="uk-">Americanise</span>!</p>
+                <p><b>Make US:</b> <span class="us-">Anglicize</span> or <span class="us-">Americanize</span>!</p>
+                <p><b>Middle Ground:</b> <span class="both">Anglify</span> or <span class="uk-">Americanise</span>!</p>
+
+                <h2>Length of Code</h2>
+                <p>The spell-check functionality is no more than 50 lines of Javascript. Another 10 deal with autofocus on load and <span class="uk-">synchronising</span> the scroll of the front and back divs.</p>
+                <p>HTML and CSS are around 150 lines in total, but the bulk of the page's load time is due to the large data sets of spelling variants: around 98.8% of it. A slightly faster load speed was sacrificed for quicker look-up later on.</p>
+            </div>
+        </main>
+
+        <nav>
+            <a href="/index.html">&lt;&lt; Home</a>
+            <p>|</p>
+            <a href="index.html">&lt; Back to Spell Checker</a>
+        </nav>
+    </div>
+</body>
+
+<script src="/backgrounds.js"></script>
+<link rel="stylesheet" href="/core.css">
+<link rel="stylesheet" href="style.css">
+</html>

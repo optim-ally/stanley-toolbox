@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>How To – Distance Calculator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="drawBackground(3);">
+    <canvas id="bg-3" width="1280" height="800"></canvas>
+
+    <div id=container>
+        <main>
+            <h1>Distance Calculator</h1>
+            <p>How it Works</p>
+
+            <div class="how-to">
+                <h2>Input Options</h2>
+                <p>The program supports the following input formats:</p>
+                <ul>
+                    <li>Place Name, e.g. <b>Jakarta / Indonesia</b></li>
+                    <li>Country Code, e.g. <b>ID</b></li>
+                    <li>Signed decimal, e.g. <b>-6.17, 106.82</b></li>
+                    <li>Degrees + direction, e.g. <b>6.17S, 106.82E</b></li>
+                    <li>Degrees, minutes + direction, e.g. <b>6°10'S, 106°49'E</b></li>
+                    <li>Degrees, minutes, seconds + direction, e.g. <b>6°10'21"S, 106°49'44"E</b></li>
+                </ul>
+                <p>In each of the "from" and "to" fields independently.</p>
+                <p>If a string input is detected, the Levenshtein distance metric is used to display the closest matches in a drop-down selection menu from a database of countries and capitals. The drop-down is built from scratch with divs that always display the closest matches and are hidden if empty. It is navigated using "keydown" event listeners.</p>
+
+                <h2>Distance Calculation</h2>
+                <p>Coordinates are scraped from each input field, from either the text itself or from a database of city coordinates downloaded from <a href="http://techslides.com/list-of-countries-and-capitals">Techslides</a>, or the field is coloured red to indicate that coordinates could not be extracted.</p>
+                <p>The following simple trig functions are used over the more popular haversine formula, which is only significantly more accurate for distances of tens of meters or closer:</p>
+                <p class="formula">cos<sup>-1</sup> ( cosφ<sub>1</sub>&times;cosφ<sub>2</sub>&times;cos(λ<sub>2</sub>-λ<sub>1</sub>) + sinφ<sub>1</sub>&times;sinφ<sub>2</sub> )</p>
+
+                <h2>Mapping Results</h2>
+                <p>The world map used is a Winkel-Tripel projection, for which the geographic to cartesian coordinate conversion formulae are:</p>
+                <p class="formula">x = a<sub>x</sub> + b<sub>x</sub>( λ/π + cosφ&times;sin(λ/2)/sincα )</p>
+                <p class="formula">y = a<sub>y</sub> + b<sub>y</sub>( φ + sinφ/sincα )</p>
+                <p class="formula">Where α = cos<sup>-1</sup>( cosφ&times;cos(λ/2) ) and a<sub>x</sub>, b<sub>x</sub>, a<sub>y</sub>, b<sub>y</sub> are constants.</p>
+                <p>The line between the two locations is the shortest great-circle arc connecting them (or any arc in the case of antipodes) and is drawn in sections, dot-to-dot, connecting the normalisations of vectors lying between the points in 3D space. This requires a change from geographic to 3D Cartesian coordinates to find the vectors, followed by a change back to geographic, then finally a change to 2D Cartesian for plotting on the map.</p>
+
+                <h2>Length of Code</h2>
+                <p>There are around 130 lines of HTML and 70 of CSS. The core functionality (coordinate scraping, distance calculation, presentation) is 250 lines of Javascript, just over half of which is devoted to translating user-friendly data to and from raw coordinates for calculations, and the search features take around another 140 lines.</p>
+                <p>The database of Countries, Capital Cites and their coordinates is just under two thirds of the total page size.</p>
+            </div>
+        </main>
+
+        <nav>
+            <a href="/index.html">&lt;&lt; Home</a>
+            <p>|</p>
+            <a href="index.html">&lt; Back to Distance Calculator</a>
+        </nav>
+    </div>
+</body>
+
+<script src="/backgrounds.js"></script>
+<link rel="stylesheet" href="/core.css">
+<link rel="stylesheet" href="style.css">
+</html>

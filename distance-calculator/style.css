@@ -1,0 +1,57 @@
+#inputs { margin-top: 3%; }
+#inputs > div {
+    display: inline-block;
+    vertical-align: top;
+    margin: 0 2% 0 0;
+    width: 38%;
+    text-align: left; }
+#from, #to {
+    height: 2.7em;
+    padding: 10px;
+    background-color: white;
+    border: .5px solid black;
+    font-size: 1em;
+    white-space: nowrap;
+    overflow: hidden;
+}
+#from *, #to * { display: inline; }
+#from br, #to br { display: none; }
+
+#inputs button {
+    display: inline-block;
+    margin-top: 4.5em;
+    height: 2.7em;
+    width: 3em;
+    font-size: 1em;
+}
+
+#from-suggestions, #to-suggestions { position: relative; top: .05em; }
+.from, .to {
+    border-style: none solid solid;
+    border-width: .5px;
+    height: 2.7em;
+    width: 100%;
+    background-color: white;
+    margin-top: -1px;
+    padding: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    visibility: hidden;
+}
+
+#info { margin-top: -13em; }
+#distance { margin-bottom: 2%; }
+#from-info, #to-info {
+    display: inline-block;
+    width: 40%;
+    margin: 0 2%;
+}
+
+img { width: 100%; }
+
+#map-plot {
+    margin-top: -59.6%;
+    width: 91%;
+    height: 40.2vw;
+}

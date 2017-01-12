@@ -1,0 +1,45 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>UK-US Spell Checker</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="drawBackground(2);">
+    <canvas id="bg-2" width="1280" height="800"></canvas>
+
+    <div id=container>
+        <main>
+            <h1>British vs American Spell-Checker</h1>
+            <div id="textbox">
+                <div id="text-fg" contenteditable oninput="check('none')"></div>
+                <div id="text-bg"></div>
+            </div>
+
+            <div>
+                <button id="makeUK" onclick="check('uk')">Make British</button>
+                <button id="middle" onclick="check('both')">Middle Ground</button>
+                <button id="makeUS" onclick="check('us')">Make American</button>
+            </div>
+
+            <div>
+                <p><b>Be careful!</b> It highlights any word that could have contested spellings, even if you meant something different. Double <span class="uk"><del>cheque</del></span> <span class="us">check</span> before making any changes.</p>
+            </div>
+        </main>
+
+        <nav>
+            <a href="/index.html">&lt; Home</a>
+            <p>|</p>
+            <a href="how-to.html">How it works &gt;</a>
+        </nav>
+    </div>
+</body>
+
+<script src="js/word-list.js"></script>
+<script src="js/word-lists.js"></script>
+<script src="js/spell-check.js"></script>
+<script src="/backgrounds.js"></script>
+<link rel="stylesheet" href="/core.css">
+<link rel="stylesheet" href="style.css">
+</html>

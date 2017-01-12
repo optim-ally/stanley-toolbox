@@ -1,0 +1,60 @@
+body {
+    font-family: sans-serif;
+    font-weight: 100;
+    text-overflow: clip;
+}
+
+table {
+    width: 300px;
+    height: 300px;
+    text-align: center;
+    font-size: 500%;
+    table-layout: fixed;
+    float: left;
+}
+
+td {
+    width: 100px;
+    height: 100px;
+}
+
+table, td {
+    border:1px solid black;
+}
+
+#buttons {
+    float: left;
+    margin-left: 30px;
+}
+
+button, #winner {
+    position: absolute;
+}
+
+#toggle-player { top: 35px; }
+
+#random { top: 125px; }
+#toggle-ranking { top: 150px; }
+#mutation { top: 175px; }
+#gen1 { top: 225px; }
+#gen10 { top: 250px; }
+#gen100 { top: 275px; }
+#gen1000 { top: 300px; }
+
+#weights {
+    position: absolute;
+    left: 500px;
+    height: 680px;
+    overflow: scroll;
+}
+
+#improvement {
+    position: absolute;
+    top: 340px;
+}
+
+#canvas-holder{
+    position: absolute;
+    top: 450px;
+    left: 10px;
+}

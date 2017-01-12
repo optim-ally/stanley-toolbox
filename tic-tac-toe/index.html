@@ -1,0 +1,46 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>Tic-tac-toe neural network</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <table id="board">
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+        <tr><td></td><td></td><td></td></tr>
+    </table>
+    <div id="buttons">
+        <button id="retry">Retry</button><br>
+        <button id="toggle-player">Play as O</button><br>
+        <p id="winner"></p><br>
+        <button id="random">Generate random</button><br>
+        <button id="toggle-ranking">Random training</button>
+        <button id="mutation">High mutation rate</button>
+        <button id="gen1">Next generation</button><br>
+        <button id="gen10">Do 10 generations</button><br>
+        <button id="gen100">Do 100 generations</button><br>
+        <button id="gen1000">Do 1000 generations</button>
+    </div>
+    <div id="weights">
+        <p>Best player:</p>
+        <p id="best"></p><br>
+        <p>Other top-10:</p>
+        <p id="rest"></p>
+    </div>
+    <div id="improvement">
+        <p id="generation"></p>
+        <p id="vs-random"></p>
+    </div>
+    <div id="canvas-holder">
+        <canvas id="chart" height="240px" width="450px"></canvas>
+    </div>
+</body>
+
+<script src="https://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script>
+<script src="js/Chart.js"></script>
+<script src="js/neural-network.js"></script>
+<script src="js/play.js"></script>
+<script src="js/generation.js"></script>
+</html>

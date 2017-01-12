@@ -1,0 +1,31 @@
+#textbox {
+    margin-top: 4%;
+    height: 50%;
+    text-align: left;
+}
+
+#textbox > div {
+    position: absolute;
+    height: 50%;
+    width: 72%;
+    padding: 10px;
+    border: .5px solid #000;
+    font-size: 1em;
+}
+#text-fg { background: none; z-index: 1; overflow-y: scroll; }
+#text-bg { background-color: white; color: white; overflow-y: scroll; }
+
+main button {
+    margin: 5% 2% 0;
+    padding: 3vw;
+    font-size: 2vw;
+}
+#makeUK { background-color: #BBCCFF; }
+#middle { background-color: #BBFFEE; }
+#makeUS { background-color: #FFBBBB; }
+
+.uk   { background: #BBCCFF; }
+.uk-  { background: #DDE5FF; }
+.both { background: #BBFFEE; }
+.us-  { background: #FFDDDD; }
+.us   { background: #FFBBBB; }

@@ -1,0 +1,74 @@
+body * {
+    font-family: Avenir, Tahoma, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+body > canvas {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background-color: aliceblue;
+    z-index: -1;
+}
+
+#container {
+    margin: 8%;
+    padding: 1% 5%;
+    text-align: center;
+    border-radius: 10px;
+    background-color: floralwhite;
+    box-shadow: 0 0 10px;
+    animation: fade-in .3s linear .7s;
+    -webkit-animation-fill-mode: backwards;
+}
+
+#canvas, #blackdrop {
+    width: 60vw;
+    height: 60vw;
+    max-height: 90vh;
+    max-width: 90vh;
+    margin: 1vw auto;
+}
+#canvas { 
+    position: absolute;
+    transform: translateX(-50%);
+    z-index: 1; }
+#blackdrop {
+    background-color: black;
+    left: 50vw;
+}
+#message {
+    font-size: 4vh;
+    color: rgba(180,220,250,.5);
+    padding-top: 6vh;
+    visibility: hidden;
+}
+
+h1 { font-size: 3.7vw; margin-bottom: 0; }
+
+nav { margin: 2vh 0 1.5vh;}
+nav > * { display: inline; margin: 0 .3vw; font-size: 2.5vw; }
+
+.how-to { text-align: left; }
+
+.formula { text-align: center; }
+
+code {
+    padding: 0 3px 1px;
+    font-family: monospace;
+    background-color: #DDD;
+    border: 1px solid #AAA;
+    border-radius: 5px;
+}
+
+code sub {
+    font-family: monospace;
+    font-size: .2em;
+}
+
+@keyframes fade-in {
+    from { opacity: 0; }
+    to   { opacity: 1; }
+}
