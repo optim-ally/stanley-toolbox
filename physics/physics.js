@@ -1,9 +1,5 @@
-var fps = 1, gravity = 4, dampenBelow = .1, shapes = [], timeouts = [], drag = -1,
-    addingCircle = 0, addingSquare = 0, addingTriangle = 0, drawing = 0, del = -1,
-    deleting = 0, mouse, mouseX1, mouseY1, mouseX2, mouseY2, mouseDX, mouseDY,
-    dist, legal, offsetX, offsetY, newDY, newY,
-    canvas = document.getElementById("canvas"), ctx = canvas.getContext("2d"),
-    message = document.getElementById("message");
+var fps = 1, gravity = 4, dampenBelow = .1, shapes, timeouts, drag = -1, addingCircle = 0, addingSquare = 0, addingTriangle = 0, drawing = 0, del = -1, deleting = 0, mouse, mouseX1, mouseY1, mouseX2, mouseY2, mouseDX, mouseDY, dist, legal, offsetX, offsetY, newDY, newY,
+    canvas = document.getElementById("canvas"), ctx = canvas.getContext("2d"), message = document.getElementById("message");
 
 function reset() {
   for (var i=0; i<timeouts.length; i++) clearTimeout(timeouts[i]);
@@ -38,7 +34,7 @@ function drawCircle( x, y, radius ) {
   ctx.beginPath();
   ctx.arc(x,y,radius,0,2*Math.PI);
   ctx.stroke();
-  ctx.fill();  
+  ctx.fill();
 }
 
 function distance( x1, y1, x2, y2 ) {
