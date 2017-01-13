@@ -1,3 +1,5 @@
+p { font-size: 2vw; }
+
 nav { margin: 5vw 11vw; text-align: left; }
 nav > * { display: block; }
 
@@ -5,5 +7,5 @@ nav > * { display: block; }
 ul { padding-left: 2vw; }
 
 h2 { font-size: 2.4vw; }
-h3, ul, p { font-size: 2vw; margin-left: 2vw; }
+h3, ul, .link-family p { font-size: 2vw; margin-left: 2vw; }
 nav h3, nav p { display: inline; }
