@@ -1,0 +1,55 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Language neural network</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="initialise();">
+    <div id="user-input">
+        <p>Input any English, French, German, or Spanish word to see if the neural network can guess the language.</p>
+        <input id="input-text" type="text" oninput="userTrial();">
+        <button id="go" onclick="userTrial();">Go</button>
+    </div>
+
+    <div id="buttons">
+        <button id="iterate" onclick="dataTrial();">Do 1 iteration</button><br>
+        <button id="start" onclick="startTraining();">Start training</button><br>
+        <button id="stop" onclick="stopTraining();">Stop training</button>
+        <input id="en" type="checkbox" checked=true>English</br>
+        <input id="fr" type="checkbox" checked=true>French</br>
+        <input id="de" type="checkbox" checked=true>German</br>
+        <input id="es" type="checkbox" checked=true>Spanish</br>
+    </div>
+
+    <div id="results">
+        <p>This trial:</p>
+        <div id="user-trial">
+            0% English<br/>0% French<br/>0% German<br/>0% Spanish<br/>
+        </div><br/>
+        <p id="previous-training">Previous training:</p>
+        <div id="training-trials"></div>
+    </div>
+
+    <div id="improvement">
+        <p id="iteration"></p>
+        <p id="win-ratio"></p>
+    </div>
+
+    <!-- <div id="canvas-holder">
+        <canvas id="chart" height="240px" width="430px"></canvas>
+    </div> -->
+
+    <div id="background-fade1"></div>
+    <div id="background-fade2"></div>
+</body>
+
+<script src="js/word-list-english.js"></script>
+<script src="js/word-list-french.js"></script>
+<script src="js/word-list-german.js"></script>
+<script src="js/word-list-spanish.js"></script>
+<script src="js/display.js"></script>
+<script src="js/neural-network.js"></script>
+<link rel="stylesheet" href="style.css">
+</html>
