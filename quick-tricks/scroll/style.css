@@ -1,0 +1,37 @@
+h1 { font-size: 5vw; }
+p { font-size: 3vw; }
+
+section {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    padding: 20vh 20vw;
+    overflow: auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#panel-1 { background-color: floralwhite; }
+#panel-2 { background-color: azure; z-index: -1; }
+#panel-3 { background-color: #FFF8F8; z-index: -2; }
+#panel-4 { background-color: aliceblue; z-index: -3; }
+#panel-5a { background-color: #FFD; z-index: -4; width: 50%; }
+#panel-5b { background-color: #FFD; z-index: -4; width: 50%; }
+#panel-6a { background-color: #EFE; z-index: -5; height: 50%; }
+#panel-6b { background-color: #EFE; z-index: -5; height: 50%; }
+#panel-7a { background-color: #DDF; z-index: -6; height: 50%; width: 50%; }
+#panel-7b { background-color: #DDF; z-index: -6; height: 50%; width: 50%; }
+#panel-7c { background-color: #DDF; z-index: -6; height: 50%; width: 50%; }
+#panel-7d { background-color: #DDF; z-index: -6; height: 50%; width: 50%; }
+#panel-8a { background-color: floralwhite; z-index: -7; height: 60%; }
+#panel-8b { background-color: azure; z-index: -7; }
+#panel-8c { background-color: #FFF8F8; z-index: -7; }
+#panel-8d { background-color: aliceblue; z-index: -7; width: 35%; padding: 0; }
+#panel-8e { background-color: aliceblue; z-index: -7; width: 35%; left: 65%; }
+#panel-8f { background-color: aliceblue; z-index: -7; width: 15%; padding: 0; }
+#panel-8g { background-color: aliceblue; z-index: -7; width: 15%; left: 85%; }
+#panel-8h { background-color: aliceblue; z-index: -7; top: 100%; }
+#panel-9 { background-color: aliceblue; z-index: -7; top: 100%; }
