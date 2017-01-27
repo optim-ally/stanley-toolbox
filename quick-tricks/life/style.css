@@ -1,0 +1,43 @@
+html { background-color: aliceblue; }
+body { text-align: center; }
+
+h1 { font-size: 4vh; }
+p { font-size: 2.3vh; margin-top: 1vh; }
+
+canvas {
+    position: fixed;
+    top: 12vh;
+    left: 5%;
+    height: 72vh;
+    width: 90%;
+    border: solid #AAA 1px;
+}
+#grid {
+    background: white;
+    background: linear-gradient(135deg,white,#EEE);
+}
+
+#speed {
+    position: fixed;
+    top: 85vh;
+    left: 20vw;
+    width: 60vw;
+}
+#speed * { display: inline; }
+#speed p { position: relative; top: -3.5px; }
+input { width: 40vw; margin: 0 2vw;}
+
+#buttons {
+    position: fixed;
+    top: 89.5%;
+    left: 0;
+    width: 100%;
+}
+
+button {
+    height: 9vh;
+    width: 15vw;
+    font-size: 2.7vh;
+    margin: -.8vh 1.6vw;
+    background-color: white
+}
