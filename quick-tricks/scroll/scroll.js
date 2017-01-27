@@ -88,8 +88,8 @@ function myScroll(e) {
             panel8c.style.top = .4*height-.4*offsetY;
             panel8d.style.top = -height+offsetY/2;
             panel8e.style.top = -height+offsetY/2;
-            panel8f.style.top = offsetY;
-            panel8g.style.top = offsetY;
+            panel8f.style.top = 0;
+            panel8g.style.top = 0;
             panel8h.style.top = height/2-offsetY/2;
             panel9.style.top = height-offsetY;
             break;
