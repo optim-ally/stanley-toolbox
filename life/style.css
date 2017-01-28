@@ -16,7 +16,6 @@ canvas {
     background: white;
     background: linear-gradient(135deg,white,#EEE);
 }
-#overlay { z-index: 1; }
 
 #speed {
     position: fixed;
@@ -41,18 +40,4 @@ button {
     font-size: 2.7vh;
     margin: -.8vh 1.6vw;
     background-color: white
-}
-
-#message {
-    position: fixed;
-    top: 40vh;
-    left: 20vw;
-    width: 60vw;
-    padding: 4vh;
-    color: white;
-    background-color: #CCC;
-    border-radius: 3vw;
-    visibility: visible;
-    animation: fade-in reverse 3s;
-    animation-fill-mode: forwards;
 }
