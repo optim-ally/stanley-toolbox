@@ -45,6 +45,12 @@ function updateShapes() {
     if (alive.includes(i+gridSize)) cornerPoints.push(3);
     drawShape(cornerPoints,i%gridSize*pix,Math.floor(i/gridSize)*pix);
   }
+  for (var i in alive) {
+    i = alive[i];
+    ctx.beginPath();
+    ctx.ellipse(zX(i%gridSize*pix),zY(Math.floor(i/gridSize)*pix), pixW/2,pixH/2,0,0,2*Math.PI);
+    ctx.fill();
+  }
 }
 
 function drawShape( points, x, y ) {
@@ -56,7 +62,6 @@ function drawShape( points, x, y ) {
     ctx.lineTo(zX(x+(i>0&i<3)*pix),zY(y+(i>1)*pix));
     ctx.lineTo(zX(x+(1-Math.abs(i-1)/2)*pix),zY(y+(1-Math.abs(i-2)/2)*pix));
   }
-  ctx.closePath();
   ctx.fill();
 }
 
