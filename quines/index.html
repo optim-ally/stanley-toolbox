@@ -1,0 +1,54 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Quines</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+
+<body onload="drawBackground(1);">
+  <canvas id="bg-1" width="1280" height="800"></canvas>
+
+  <div id=container>
+    <main>
+      <h1>Quines</h1>
+      <p>Non-Empty, Input-Free, Self-Replicating Programmes</p>
+
+      <p class="definition">My first 'sort-of' quine <code>...innerHTML = Quine();</code></p>
+      <div id="quine-1"></div>
+      <p class="definition">Minified: 192 characters <code>...innerHTML = Q();</code></p>
+      <div id="quine-2"></div>
+      <p class="definition">Even shorter: 136 characters <code>...innerHTML = q();</code></p>
+      <div id="quine-3"></div>
+      <p class="definition">As proper, self-printing quines</p>
+      <div><script>
+        (function(){a="(function(){a=; document.write(a.slice(0,14)+'&~'+a+'&~'+a.slice(14,81).replace(/~/g,'#34;')+a.slice(81))}())"; document.write(a.slice(0,14)+'"'+a+'"'+a.slice(14,81).replace(/~/g,'#34;')+a.slice(81))}())
+      </script></div>
+      <div><script>
+        a="a=; document.write(a.slice(0,14)+JSON.stringify(a)+a.slice(3))"; document.write(a.slice(0,3)+JSON.stringify(a)+a.slice(3))
+      </script></div>
+      <p class="definition">The shortest I could make (although <code>eval</code> is not ideal)</p>
+      <div><script>
+        document.write(eval(a="'document.write(eval(a='+JSON.stringify(a)+'))'"));
+      </script></div>
+      <p class="definition">A similar quine I found online that doesn't use <code>eval</code></p>
+      <div><script>
+        v="b='v='+JSON.stringify(v),document.write(b+','+v)",b='v='+JSON.stringify(v),document.write(b+','+v);
+      </script></div>
+      <p class="definition">The shortest I could find online (although self-reading may be considered input)</p>
+      <div><script>
+        function q(){document.write(q,'q()')}q()
+      </script></div>
+
+      <nav>
+        <a href="/index.html">&lt; Home</a>
+      </nav>
+    </main>
+  </div>
+</body>
+
+<script src="/backgrounds.js"></script>
+<script src="quines.js"></script>
+<link rel="stylesheet" href="/core.css">
+<link rel="stylesheet" href="style.css">
+</html>
