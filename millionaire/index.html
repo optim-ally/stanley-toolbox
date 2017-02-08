@@ -42,7 +42,7 @@
       <div id='rules'>
         <h1>How To Play</h1>
         <p>Answer each question correctly within the time limit to move on to the next. Questions are played for increasingly large sums, roughly doubling at each turn.</p>
-        <p>After selecting an answer, you have the option to change as many times as you like until you click 'final answer'. After this the answer will be locked in.</p>
+        <p>After selecting an answer, you have the option to change as many times as you like until you click 'final answer'. After this the answer will be locked in and the timer will stop. If the timer runs out, your last selected answer will be locked in.</p>
         <p>At any point within a question's time limit, or before starting the next question, you can 'walk away' with your winnings so far. </p>
         <p>There are also two milestone questions per game. Answering these correctly guarantees your current winnings. After the £1,000 question, for example, you will leave with at least £1,000 even if you get a subsequent question wrong. Your winnings would  drop down to the last milestone reached instead of all the way back to £0.</p>
         <h2>Game Modes</h2>
@@ -110,6 +110,7 @@
 
   <img id='studio' src='images/studio.jpg'>
   <canvas id='bg' width='760' height='1000'></canvas>
+  <canvas id='celebration' width='760' height='1000'></canvas>
   
 </main></body>
 
@@ -122,4 +123,5 @@
 <script src='scripts/get-questions.js'></script>
 <script src='scripts/gameplay.js'></script>
 <script src='scripts/lifelines.js'></script>
+<script src='scripts/celebration.js'></script>
 </html>
