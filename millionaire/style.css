@@ -264,7 +264,7 @@ footer {
 #message-board > div:first-child { position: fixed; }
 #message-board #panel {
   border: 3px solid silver;
-  border-radius: 10%;
+  border-radius: 10vh;
   background: rgba(0,0,50,.9);
   box-shadow: 0 0 500px black;
   font-size: 200%;
@@ -287,6 +287,33 @@ footer {
 #message-text {
   top: 5%;
   padding: 10%;
+}
+#message-text > div {
+  width: 60%;
+  height: 60%;
+  left: 20%;
+  border: 1px solid;
+}
+#message-text > div > div {
+  width: 15%;
+  background: -webkit-linear-gradient(white,purple);
+  background: -moz-linear-gradient(white,purple);
+  background: -o-linear-gradient(white,purple);
+  background: linear-gradient(white,purple);
+}
+#message-text #bar-A { left: 8.75%; }
+#message-text #bar-B { left: 31.25%; }
+#message-text #bar-C { left: 53.75%; }
+#message-text #bar-D { left: 76.25%; }
+
+#message-text table {
+  position: absolute;
+  width: 54%;
+  top: 60%;
+  left: 23.5%;
+  text-align: center;
+  color: white;
+  font-size: 4vh;
 }
 #message-board #buttons {
   height: 10%;
@@ -370,6 +397,7 @@ footer {
   background-color: palegoldenrod;
 }
 .lit { animation: lit 1s linear infinite; }
+.flashing { animation: flashing .5s linear infinite; }
 
 @media screen and (max-aspect-ratio: 2/3) {
   #timer, #clock, #light-container {
@@ -424,6 +452,11 @@ footer {
   60%  { background-color: yellow; }
   80%  { background-color: lightyellow; }
   100% { background-color: white; }
+}
+@keyframes flashing {
+  0%   { background-color: orange; }
+  50%  { background-color: lightyellow; }
+  100% { background-color: orange; }
 }
 
 
@@ -599,7 +632,7 @@ u {
 
 
 #studio { visibility: hidden }
-#bg {
+#bg, #celebration {
   position: fixed;
   top: 0;
   left: 0;
