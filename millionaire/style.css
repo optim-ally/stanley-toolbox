@@ -1,3 +1,4 @@
+/* import font to be used for the question text & money ladder */
 @font-face {
     font-family: Conduit;
     src: url(fonts/conduit_itc_medium1.ttf);
@@ -8,6 +9,12 @@ body {
   font-family: Conduit, sans-serif;
 }
 
+
+
+
+
+/* positioning of the main game panels (html <section> elements) */
+/* menu/navigation panels slide on top of the main game interface */
 section {
   position: fixed;
   padding: .5vw;
@@ -90,6 +97,7 @@ footer {
   background: linear-gradient(rgba(0,0,0,0),rgba(0,10,20,.9) 50%);
 }
 
+/* the panels snap to new positions on window resize */
 @media screen and (max-aspect-ratio: 2/3) {
   #timer-display {
     width: 100vw;
@@ -113,7 +121,6 @@ footer {
     height: 300px;
   }
 }
-
 @media screen and (min-aspect-ratio: 1/1) {
   #timer-display {
     width: 70vw;
@@ -132,6 +139,7 @@ footer {
   }
 }
 
+/* animations for menu navigation */
 @keyframes inLeft {
   from { left: -100vw; }
   to   { left: 0; }
@@ -153,13 +161,14 @@ footer {
 
 
 
+/* elements inside the menu/navigation panel */
 #home .button {
   position: relative;
   width: 30%;
   min-width: 300px;
   height: 15%;
   border: 30px double darkblue;
-  border-image: url("images/question-frame.png") 30% stretch;
+  border-image: url('images/question-frame.png') 30% stretch;
   z-index: 1;
 }
 #home .button > div {
@@ -200,6 +209,7 @@ footer {
 
 
 
+/* elements inside the high-scores and how-to-play panels */
 #high-scores > div:first-child, #how-to-play > div:first-child {
   width: 90%;
   height: 90%;
@@ -261,6 +271,7 @@ footer {
 
 
 
+/* elements inside the pop-up message panel */
 #message-board > div:first-child { position: fixed; }
 #message-board #panel {
   border: 3px solid silver;
@@ -330,6 +341,9 @@ footer {
 
 
 
+/* elements inside the main game-play panels... */
+/* */
+/* ...top-left panel displaying the timer, final-answer button */
 #timer-display {
   display: flex;
   justify-content: center;
@@ -346,7 +360,7 @@ footer {
   align-items: center;
   font-size: 25vw;
   color: white;
-  font-family: "Copperplate"
+  font-family: 'Copperplate'
 }
 #walk-away {
   position: fixed;
@@ -463,6 +477,7 @@ footer {
 
 
 
+/* ...bottom-left/bottom panel displaying the question & answers */
 #question-display b { font-size: 50%; }
 #question-display #question, .answer-text, .answer {
   color: white;
@@ -480,7 +495,7 @@ footer {
 }
 #question-bg, .answer-bg {
   border: 30px double darkblue;
-  border-image: url("images/question-frame.png") 30% stretch;
+  border-image: url('images/question-frame.png') 30% stretch;
 }
 #question-bg {
   width: 80%;
@@ -568,6 +583,7 @@ u {
 
 
 
+/* ...right/top-right/hidden panel displaying the money ladder and lifelines */
 #lifelines * {
   width: 25%;
   margin: 1%;
@@ -631,6 +647,8 @@ u {
 
 
 
+
+/* background elements */
 #studio { visibility: hidden }
 #bg, #celebration {
   position: fixed;
