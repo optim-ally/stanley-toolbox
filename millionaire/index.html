@@ -6,8 +6,10 @@
   <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 
-<body onload='drawBackground()'><main>
+<body>
+  <main>
 
+  <!-- home page, initial view, on top of game interface -->
   <section id='home'>
     <div class='button' id='to-high-scores'><div>High Scores</div></div>
     <div class='button' id='to-how-to-play'><div>How to Play</div></div>
@@ -23,6 +25,7 @@
     </footer>
   </section>
 
+  <!-- high scores page, slides in on click, on top of game interface -->
   <section id='high-scores'>
     <div>
       <p>Traditional Version</p>
@@ -37,6 +40,7 @@
     <div class='menu-line-4'></div>
   </section>
 
+  <!-- rules page, slides in on click, on top of game interface -->
   <section id='how-to-play'>
     <div>
       <div id='rules'>
@@ -60,6 +64,7 @@
     <div class='menu-line-4'></div>
   </section>
 
+  <!-- panel to display messages, fixed, hidden/visible when needed -->
   <section id='message-board'>
     <div></div>
     <div id='panel'>
@@ -73,6 +78,7 @@
     <input type='text'></div>
   </section>
 
+  <!-- game interface, shows question timer, walk-away, final answer -->
   <section id='timer-display'>
     <div id='timer'></div>
     <img id='clock' src='images/clock.png'>
@@ -81,6 +87,7 @@
     <img id='switch' src='images/lifeline-switch.png'>
   </section>
 
+  <!-- game interface, shows question, answer options -->
   <section id='question-display'>
     <div id='question-line'></div>
     <div id='question-bg'></div>
@@ -96,6 +103,7 @@
       <div class='answer-text'><b>&diams; </b>&nbsp;&nbsp;<u>D&nbsp;:&nbsp;&nbsp;</u><span class='answer'></span></div></div>
   </section>
 
+  <!-- game interface, shows money ladder, question number, lifelines -->
   <section id='money-ladder'>
     <div class='graphics-layer'>
       <div id='lifelines'>
@@ -108,11 +116,13 @@
     </div>
   </section>
 
+  <!-- game interface, background image, win animations  -->
   <img id='studio' src='images/studio.jpg'>
   <canvas id='bg' width='760' height='1000'></canvas>
   <canvas id='celebration' width='760' height='1000'></canvas>
   
-</main></body>
+  </main>
+</body>
 
 <link rel='stylesheet' href='style.css'>
 <script src='https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js'></script>
