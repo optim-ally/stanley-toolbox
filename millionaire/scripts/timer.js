@@ -1,39 +1,51 @@
-var tic, currentTime = 60, timerRunning, timerHTML = "";
+var tic, currentTime = 60, timerRunning, timerHTML = '', lights;
 
-for (var i=0; i<36; i++) timerHTML += "<div class='light'/>";
-$('#timer-display').append("<div id='light-container'>" + timerHTML + '</div>');
+// add 36 small, rounded divs around the timer to be lights
+$(function(){
+  for (var i=0; i<36; i++) timerHTML += "<div class='light'/>";
+  $('#timer-display').append("<div id='light-container'>" + timerHTML + '</div>');
 
-var lights = $('.light');
-
-for (var i=0; i<lights.length; i++) {
-  lights[i].style.marginTop = 50-53*Math.cos(i/18*Math.PI) + '%';
-  lights[i].style.marginLeft = 50+53*Math.sin(i/18*Math.PI) + '%';
-  lights[i].className = 'light';
-}
+  lights = $('.light');
+  // use Math.sin() and Math.cos() to position them in a circle
+  for (var i=0; i<lights.length; i++) {
+    lights[i].style.marginTop = 50-53*Math.cos(i/18*Math.PI) + '%';
+    lights[i].style.marginLeft = 50+53*Math.sin(i/18*Math.PI) + '%';
+    lights[i].className = 'light';
+  }
+});
 
 
 function startTimer( t ) {
   timerRunning = true;
+  // if no parameter is given, restart the timer from current state
   currentTime = t || currentTime;
+  // delay successive light's animations by another 1/36s to give the illusion of colours moving around the circle
   for (var i=0; i<lights.length; i++) {
     lights[i].style.animationDelay = i/36-1 + 's';
     lights[i].className = 'light lit';
   }
+  // define looped function to cause timer to tick down
+  // (light animations are separate, but in sync with the timer)
   function countDown() {
     $('#timer').html(currentTime);
     currentTime--;
     if (currentTime >= 0) tic = setTimeout(countDown,1000);
+    // once the timer reaches 0, it stops and the lights all turn red
     else {
       for (var i=0; i<lights.length; i++) { lights[i].style.backgroundColor = 'red'; }
       stopTimer();
+      // if user has an answer selected, that answer is locked in
       finalAnswer();
     }
   }
+  // initial call to enter countdown loop
   countDown();
 }
 
 function stopTimer() {
   clearTimeout(tic);
   timerRunning = false;
+  // if it's just a pause, all lights go white(-ish) until the timer starts again
+  // (if time runs out, the lights will stay red, since 'style.backgroundColor' overrules the default CSS styling of the 'light' class)
   for (var i=0; i<lights.length; i++) { lights[i].className = 'light'; }
 }
