@@ -1,4 +1,4 @@
-var baseURL = 'https%3A%2F%2Fopentdb.com%2Fapi.php%3Famount%3D1', answerText = $('.answer'), getQuestionSuccess, responseCode, question, answers, correctAnswer, token;
+var baseURL = 'https%3A%2F%2Fopentdb.com%2Fapi.php%3Famount%3D1', answerText = $('.answer'), getQuestionSuccess, responseCode, question, answers, correctAnswer, token, url;
 
 // start by getting a session token from the question source
 // this ensures no repeat questions in the current session until neccessary
@@ -6,9 +6,7 @@ $(function(){ getNewToken(); });
 
 
 // function to request a question from the database and assign the data to variables 'question', 'correctAnswer', etc.
-function getQuestion( difficulty, category ) {
-  var category = category || 'Any', url = baseURL;
-
+function getQuestion( difficulty ) {
   // variable lets other functions know when request is completed
   getQuestionSuccess = false;
 
@@ -20,14 +18,14 @@ function getQuestion( difficulty, category ) {
     case 'Film': category = 11; break;
     case 'Music': category = 12; break;
     case 'Video Games': category = 15; break;
-    case 'Science & Nature': category = 17; break;
+    case 'Science &amp; Nature': category = 17; break;
     case 'Computers': category = 18; break;
     case 'Sports': category = 21; break;
     case 'Geography': category = 22; break;
     case 'History': category = 23; break;
     case 'Animals': category = 27; break;
     case 'Vehicles': category = 28; break;
-    case 'Japanese Anime & Manga': category = 31; break;
+    case 'Japanese Anime &amp; Manga': category = 31; break;
 
     // the following categories are supported by the API, but do not have enough questions to last a single game:
     /*

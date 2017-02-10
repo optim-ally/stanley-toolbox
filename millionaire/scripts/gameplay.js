@@ -1,4 +1,4 @@
-var questionNum, timeToAnswer, selected = '', winnings, timeSaved, version, money, ladderHTML, checking;
+var questionNum, timeToAnswer, selected = '', winnings, timeSaved, version, money, ladderHTML, checking, category = 'Any';
 
 /*
 The same element is used to display every message to the user: 
