@@ -35,3 +35,18 @@ $('.back-to-menu').click(function(){
   // simply scroll the home menu back into view
   $('#home').css({animation:'inRight 1s','animation-fill-mode':'forwards'});$('#high-scores,#how-to-play').css({animation:'outLeft 1s','animation-fill-mode':'forwards'});
 });
+
+// event handler for opening and closing the category settings
+$('#home img').click(function(){
+  $('#settings').css('visibility','visible');
+});
+$('#done').click(function(){
+  $('#settings').css('visibility','hidden');
+});
+
+// event handlers for changing category settings
+$('#settings > div > div').not('#done').click(function(){
+  $('.chosen-category').attr('class','');
+  $(this).children().attr('class','chosen-category');
+  category = $(this).children().html();
+});

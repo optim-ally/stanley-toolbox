@@ -182,6 +182,67 @@ footer {
 #play-traditional { top: 25%; float: right; }
 #play-modern { clear: right; top: 29.4%; float: right; left: -7%; }
 
+#home img {
+  position: absolute;
+  width: 10vh;
+  height: 10vh;
+  top: 3vh;
+  left: 100vw;
+  margin-left: -13vh;
+  transition: .1s;
+}
+#home img:hover {
+  width: 11vh;
+  height: 11vh;
+  top: 2.5vh;
+  margin-left: -13.5vh;
+}
+#settings {
+  font-size: 5vh;
+  line-height: 10vh;
+  color: white;
+  visibility: hidden;
+  z-index: 2;
+}
+#settings > div {
+  width: 80%;
+  height: 80%;
+  top: 10%;
+  left: 10%;
+  box-shadow: 0 0 500px black;
+  background: rgba(0,0,0,.9);
+  border: 3px solid #2578CC;
+  border-radius: 10vh;
+}
+#settings > div > div {
+  position: static;
+  display: inline-block;
+  width: 25%;
+  height: 15%;
+  margin: -1vh .5vh;
+  color: #012;
+  background: silver;
+  overflow: hidden;
+}
+#settings > div > div > div {
+  position: static;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+  line-height: normal;
+  font-size: 3.8vh;
+}
+#settings .chosen-category { background: #67677F; }
+#settings > div > div:hover { background: #AAA; }
+
+#settings #done {
+  background: none;
+  color: #FED;
+}
+#settings #done:hover { text-shadow: 0 0 30px white; }
+
 .menu-line-1, .menu-line-2, .menu-line-3, .menu-line-4 {
   height: 3px;
   width: 100vw;
@@ -203,6 +264,9 @@ footer {
 
   .menu-line-3 { top: 17.6%; }
   .menu-line-4 { top: 34%; }
+}
+@media screen and (max-aspect-ratio: 1/1) {
+  #settings > div > div > div { font-size: 3.8vw; }
 }
 
 
