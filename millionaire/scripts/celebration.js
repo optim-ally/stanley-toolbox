@@ -1,7 +1,9 @@
 var pi2 = 2*Math.PI, allConfetti = [], colors = ['#0dd','#d0d','#0f0','#dd0'], generatingConfetti, movingConfetti, animationFrame, counter = 0;
 
+var celebrationMusic = new Audio('audio/winner.mp3');
+
 // canvas context for confetti animation
-var ctx0 = $('#celebration')[0].getContext('2d')
+var ctx0 = $('#celebration')[0].getContext('2d');
 
 // called when user wins game and £1M
 function celebrate() {
@@ -15,6 +17,10 @@ function celebrate() {
   // start confetti shower
   generatingConfetti = setInterval(newConfetti,1000);
   movingConfetti = requestAnimationFrame(moveConfetti);
+
+  // play celebration music
+  celebrationMusic.currentTime = 0;
+  celebrationMusic.play();
 }
 
 // called when user exits game
@@ -26,6 +32,9 @@ function stopCelebrating() {
   allConfetti = [];
   // clear celebration canvas
   ctx0.clearRect(0,0,760,1000);
+
+  // stop music
+  celebrationMusic.pause();
 }
 
 // function called periodically to drop next load of confetti
