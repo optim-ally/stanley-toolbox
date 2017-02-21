@@ -13,6 +13,51 @@ body {
 
 
 
+/* intro video */
+#video-container {
+  position: fixed;
+  top: 50vh;
+  left: 50vw;
+  z-index: 3;
+  animation: fadeOut 1s linear 20s;
+  animation-fill-mode: forwards;
+}
+#intro-video {
+  min-height: 100vh;
+  min-width: 100vw;
+  transform: translate(-50%, -50%);
+}
+#video-container > div {
+  position: fixed;
+  width: 20vh;
+  height: 7.5vh;
+  top: 90vh;
+  left: 100vw;
+  margin-left: -20vh;
+  padding: 1vh;
+  font-size: 5vh;
+  background: #DEF;
+  border: 2px solid black;
+  color: black;
+  z-index: 4;
+  opacity: 0;
+  animation: fadeIn .5s linear 1s;
+  animation-fill-mode: forwards;
+}
+#video-container > div:hover { box-shadow: 0 0 40px silver; }
+@keyframes fadeOut {
+  0%   { opacity: 1; }
+  99%  { opacity: 0; z-index: 3; }
+  100% { z-index: -4; }
+}
+@keyframes fadeIn {
+  0%   { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+
+
+
 /* positioning of the main game panels (html <section> elements) */
 /* menu/navigation panels slide on top of the main game interface */
 section {
@@ -191,6 +236,7 @@ footer {
   margin-left: -13vh;
   transition: .1s;
 }
+#home #volume { top: 15vh; }
 #home img:hover {
   width: 11vh;
   height: 11vh;
@@ -347,7 +393,7 @@ footer {
 }
 #message-board input {
   position: absolute;
-  top: 42%;
+  top: 45%;
   width: 60%;
   height: 15vh;
   left: 20%;
