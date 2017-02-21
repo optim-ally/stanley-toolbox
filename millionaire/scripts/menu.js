@@ -1,3 +1,24 @@
+// video skip event handler
+$('#video-container > div').click(function(){
+  $('#video-container').remove();
+  startLevel1Music();
+});
+
+// main menu music (custom loop)
+var level1Music = new Audio('audio/level-1.mp3'), level1MusicOn = false;
+function startLevel1Music() {
+  if (!level1MusicOn) {
+    setInterval(function(){
+      level1Music.currentTime = 0;
+      level1Music.play();
+    },13970);
+    level1Music.play();
+    level1MusicOn = true;
+  }
+}
+// if intro video is not skipped, the music starts automatically
+setTimeout(startLevel1Music,20400);
+
 // event handlers for hovering over 'buttons' on the home menu
 $('#home .button').mouseover(function(){
   $(this).css('border-image',"url('images/question-frame-highlight.png') 30% stretch");
@@ -37,11 +58,30 @@ $('.back-to-menu').click(function(){
 });
 
 // event handler for opening and closing the category settings
-$('#home img').click(function(){
+$('#home #to-settings').click(function(){
   $('#settings').css('visibility','visible');
 });
 $('#done').click(function(){
   $('#settings').css('visibility','hidden');
+});
+
+// event handlers for muting/unmuting audio
+$('#home #volume').click(function(){
+  if ($(this).attr('src') == 'images/sound-on.png') {
+    $(this).attr('src','images/sound-off.png');
+    level1Music.volume = 0;
+    timerAudio.volume = 0;
+    wrongAnswerAudio.volume = 0;
+    rightAnswerAudio.volume = 0;
+    celebrationMusic.volume = 0;
+  } else {
+    $(this).attr('src','images/sound-on.png');
+    level1Music.volume = 1;
+    timerAudio.volume = 1;
+    wrongAnswerAudio.volume = 1;
+    rightAnswerAudio.volume = 1;
+    celebrationMusic.volume = 1;
+  }
 });
 
 // event handlers for changing category settings
