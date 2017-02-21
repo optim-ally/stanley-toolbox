@@ -1,5 +1,12 @@
 var questionNum, timeToAnswer, selected = '', winnings, timeSaved, version, money, ladderHTML, checking, category = 'Any';
 
+var currentLevelMusic = level1Music,
+    currentLevel = 1,
+    level2Music = new Audio('audio/level-2.mp3'),
+    level3Music = new Audio('audio/level-3.mp3'),
+    wrongAnswerAudio = new Audio('audio/wrong.mp3'),
+    rightAnswerAudio = new Audio('audio/right.mp3');
+
 /*
 The same element is used to display every message to the user: 
   'are you ready for the next question?'
@@ -150,22 +157,41 @@ function finalAnswer() {
   stopTimer();
   $('.hover').attr('class','');
   $('#'+correctAnswer).attr('class','correct');
-  if (selected == correctAnswer) setTimeout(questionSuccess,500);
-  else setTimeout(questionFailure,500);
+  if (selected == correctAnswer) {
+    // play soundbite
+    rightAnswerAudio.play();
+    setTimeout(questionSuccess,500);
+  } else {
+    // play soundbite
+    wrongAnswerAudio.play();
+    setTimeout(questionFailure,500);
+  }
 }
 
 
 // when question is answered correctly
 function questionSuccess() {
-  // update guaranteed winnings at milestone questions
+  // update guaranteed winnings and music at milestone questions
   // also detect game finish at £1M
   if (version == 'traditional') {
-    if (questionNum == 5) winnings = 1000;
-    if (questionNum == 10) winnings = 32000;
+    if (questionNum == 5) {
+      winnings = 1000;
+      startLevel2Music();
+    }
+    if (questionNum == 10) {
+      winnings = 32000;
+      startLevel3Music();
+    }
     if (questionNum == 15) { millionaire(); return; }
   } else {
-    if (questionNum == 2) winnings = 1000;
-    if (questionNum == 7) winnings = 50000;
+    if (questionNum == 2) {
+      winnings = 1000;
+      startLevel2Music();
+    }
+    if (questionNum == 7) {
+      winnings = 50000;
+      startLevel3Music();
+    }
     if (questionNum == 12) { millionaire(); return; }
   }
   // prepare next question
@@ -189,6 +215,7 @@ function questionFailure() {
 
 // when user wins the game & £1M
 function millionaire() {
+  level3Music.volume = 0;
   // increment question number for consistency with high-score functions
   questionNum ++;
   // begin confetti animations
@@ -196,6 +223,30 @@ function millionaire() {
   // show 3s of unobstructed confetti before displaying congrats message
   currentMessage = 'winner';
   setTimeout(newHighScore,3000);
+}
+
+
+function startLevel2Music() {
+  level1Music.volume = 0;
+  setInterval(function(){
+    level2Music.currentTime = 0;
+    level2Music.play();
+  },32000);
+  level2Music.play();
+  currentLevelMusic = level2Music;
+  currentLevel = 2;
+}
+
+
+function startLevel3Music() {
+  level2Music.volume = 0;
+  setInterval(function(){
+    level3Music.currentTime = 0;
+    level3Music.play();
+  },16000);
+  level3Music.play();
+  currentLevelMusic = level3Music;
+  currentLevel = 3;
 }
 
 
