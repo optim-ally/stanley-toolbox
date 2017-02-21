@@ -1,5 +1,7 @@
 var tic, currentTime = 60, timerRunning, timerHTML = '', lights;
 
+var timerAudio = new Audio('audio/tic-toc.mp3'), timerAudioInterval;
+
 // add 36 small, rounded divs around the timer to be lights
 $(function(){
   for (var i=0; i<36; i++) timerHTML += "<div class='light'/>";
@@ -40,11 +42,28 @@ function startTimer( t ) {
   }
   // initial call to enter countdown loop
   countDown();
+
+  // set up audio loop
+  timerAudioInterval = setInterval(function(){
+    timerAudio.currentTime = 0;
+    timerAudio.play();
+  },2000);
+  // and initialise
+  timerAudio.currentTime = 0;
+  timerAudio.play();
+  // background music fades to quiet when timer is running
+  if (currentLevel == 1) currentLevelMusic.volume = Math.min(currentLevelMusic.volume,.1);
+  else currentLevelMusic.volume = Math.min(currentLevelMusic.volume,.3);
 }
 
 function stopTimer() {
   clearTimeout(tic);
+  clearInterval(timerAudioInterval);
   timerRunning = false;
+  timerAudio.pause();
+  // background music returns to normal volume (which may be 0 or 1)
+  if (currentLevel == 1) currentLevelMusic.volume = Math.min(currentLevelMusic.volume*10,1);
+  else currentLevelMusic.volume = Math.min(currentLevelMusic.volume*4,1);
   // if it's just a pause, all lights go white(-ish) until the timer starts again
   // (if time runs out, the lights will stay red, since 'style.backgroundColor' overrules the default CSS styling of the 'light' class)
   for (var i=0; i<lights.length; i++) { lights[i].className = 'light'; }
