@@ -46,7 +46,7 @@ function phoneAFriend() {
 
 
 // variables for the ask-the-audience lifeline
-var percent = {'A':0,'B':0,'C':0,'D':0}, toc, x;
+var percent = {'A':0,'B':0,'C':0,'D':0}, toc, x, done;
 // once use of 'ask-the-audience' lifeline has been confirmed
 function askAudience() {
   stopTimer();
@@ -54,12 +54,17 @@ function askAudience() {
   // only consider answers that have not already been removed by the 50-50 lifeline
   remaining = ['A','B','C','D'].filter(function(x){ return remove.indexOf(x) < 0 });
 
-  // set all voting % to zero, since the below loop missed any removed answers
-  percent = {'A':0,'B':0,'C':0,'D':0};
-  // empirically chosen audience-competence function:
-  for (var i in remaining) percent[remaining[i]] = Math.floor(Math.random()*Math.random()*50); 
-  // the correct answer gets the remainder of the audience vote
-  percent[correctAnswer] += 100-percent['A']-percent['B']-percent['C']-percent['D'];
+  done = false;
+  while(!done) {
+    // set all voting % to zero, since the below loop missed any removed answers
+    percent = {'A':0,'B':0,'C':0,'D':0};
+    // empirically chosen audience-competence function:
+    for (var i in remaining) percent[remaining[i]] = Math.floor(Math.random()*Math.random()*50); 
+    // the correct answer gets the remainder of the audience vote
+    percent[correctAnswer] += 100-percent['A']-percent['B']-percent['C']-percent['D'];
+    // in rare case of premature overflow of 100%, try again
+    if (percent[correctAnswer] >= 0) done = true;
+  }
 
   // draw the results as a bar chart directly into the message body
   // (pre-formatted in CSS)
