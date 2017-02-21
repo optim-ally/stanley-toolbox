@@ -12,7 +12,8 @@
   <!-- home page, initial view, on top of game interface -->
   <section id='home'>
     <!-- includes settings panel for changing categories -->
-    <img src='images/settings.png'>
+    <img id='to-settings' src='images/settings.png'>
+    <img id='volume' src='images/sound-on.png'>
     <div id='settings'><div>
       Change Quiz Category<br/>
       <div><div class='chosen-category'>Any</div></div>
@@ -141,7 +142,15 @@
   <img id='studio' src='images/studio.jpg'>
   <canvas id='bg' width='760' height='1000'></canvas>
   <canvas id='celebration' width='760' height='1000'></canvas>
-  
+
+  <!-- video and audio elements -->
+  <section id='video-container'>
+    <video id='intro-video' autoplay>
+      <source src='video/intro.mp4' type='video/mp4'>
+    </video>
+    <div>Skip &gt;</div>
+  </section>
+
   </main>
 </body>
 
