@@ -1,6 +1,7 @@
 var tableHTML, index, grid, shifted = false, alted = false;
 
 $(function(){
+  alert('Update: now displays the input sentence in readable order');
   tableHTML = "<table id='grid'>";
   for (var row=0; row<3; row++) {
     tableHTML += '<tr>';
@@ -28,27 +29,6 @@ $(function(){
   });
 
   colourCells();
-
-/*
-  $('#grid div').keydown(function(e){
-    if (e.which == 8 || (e.which > 48 && e.which < 59 && !shifted && !alted))
-      $(this).text('');
-    else if (e.which != 9 && e.which != 37 && e.which != 39)
-      e.preventDefault();
-  }).focus(function(){
-    setTimeout(function(){
-      document.execCommand('selectAll',false,null); },1);
-  });
-
-
-  $(document).keydown(function(e){
-    if (e.which == 16) shifted = true;
-    if (e.which == 18) alted = true;
-  }).keyup(function(e){
-    if (e.which == 16) shifted = false;
-    if (e.which == 18) alted = false;
-  });
-*/
 });
 
 function colourCells() {

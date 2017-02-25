@@ -1,4 +1,5 @@
-var numInput, fullRowSequence, blockRowSequence, rowStrings, tempInput, tempTempInput, bestRow, bestRowMatches, bestBlock, bestBlockMatches, matches, blockMatches, temp = new Array(9), highlight;
+var numInput, rowStrings, row1, row2, row3, perms, bestPerm,
+    remainingBlocks, tempInput, fullRowSequence, bestBlock, bestBlockMatches, matches;
 
 function findInput() {
   numInput = '';
@@ -6,98 +7,48 @@ function findInput() {
   rowStrings = [];
   for (var i=0; i<9; i++) rowStrings.push(states[i].join(''));
   for (var i in input) numInput += decode[input[i].toUpperCase()] || '';
+  remainingBlocks = [0,1,2];
+
   tempInput = numInput;
-
   while (tempInput.length > 0) {
-
-    tempTempInput = tempInput;
     bestBlock = [];
     bestBlockMatches = 0;
-    for (var block=0; block<9; block+=3) {
 
-      blockMatches = 0;
-      blockRowSequence = [];
-      bestRow = -1;
-      bestRowMatches = 0;
-      for (var row=0; row<3; row++) {
+    for (var block in remainingBlocks) {
+      block = 3*remainingBlocks[block];
 
-        str = rowStrings[3*block+row];
-        if (str == '') continue;
+      rows = rowStrings.slice(block,block+3);
+      perms = [[0,1,2],[0,2,1],[1,0,2],[1,2,0],[2,0,1],[2,1,0]];
+      bestPerm = [];
+      bestPermMatches = 0;
+      for (var perm in perms) {
+        perm = perms[perm];
+        str = '';
+        for (var row in perm)
+          str += rows[perm[row]];
 
         matches = 0;
-        while (str.indexOf(tempTempInput[matches]) >= 0)
+        while (str.indexOf(tempInput[matches]) >= 0)
           str = str.slice(str.indexOf(tempInput[matches++])+1);
-        if (matches > bestRowMatches) {
-          bestRowMatches = matches;
-          bestRow = i;
+
+        if (matches > bestPermMatches) {
+          bestPermMatches = matches;
+          bestPerm = perm;
         }
       }
-      if (bestRow < 0) return false;
-      rowSequence.push(bestRow);
-      rowStrings[bestRow] = '';
-      tempTempInput = tempTempInput.slice(bestRowMatches);
-    }
+      if (bestPermMatches == 0) return false;
 
-
-
-
-    bestRow = -1;
-    bestRowMatches = 0;
-
-    for (var i in rowStrings) {
-      str = rowStrings[i];
-      if (str == '') continue;
-      matches = 0;
-      while (str.indexOf(tempInput[matches]) >= 0)
-        str = str.slice(str.indexOf(tempInput[matches++])+1);
-      if (matches > bestRowMatches) {
-        bestRowMatches = matches;
-        bestRow = i;
+      if (bestPermMatches > bestBlockMatches) {
+        bestBlockMatches = bestPermMatches;
+        bestBlock = [block/3,bestPerm];
+        remainingBlocks.splice(remainingBlocks.indexOf(block/3),1);
       }
     }
-    if (bestRow < 0) return false;
-    rowSequence.push(bestRow);
-    rowStrings[bestRow] = '';
-    tempInput = tempInput.slice(bestRowMatches);
+    if (bestBlock.length == 0) return false;
+    fullRowSequence[bestBlock[0]] = bestBlock[1];
+    tempInput = tempInput.slice(bestBlockMatches);
   }
 
-
-
-
-
-
-
-  matches = 0;
-  highlight = [];
-  for (var i in rowSequence) {
-    for (var j=0; j<9; j++) {
-      temp[j] = states[i][j];
-      states[i][j] = states[rowSequence[i]][j];
-      states[rowSequence[i]][j] = temp[j];
-
-      if (states[i][j] == numInput[matches]) {
-        highlight.push(9*i+j);
-        matches++;
-      }
-    }
-    index = rowSequence.indexOf(i);
-    if (index >= 0) {
-      rowSequence[index] = rowSequence[i];
-      rowSequence[i] = i;
-    }
-  }
-
-
-
-
-
-
-
-  for (var row=0; row<9; row++)
-  for (var col=0; col<9; col++)
-    $(grid[9*row+col]).text(encode[states[row][col]]);
-
-  for (var i in highlight)
-    $(grid[highlight[i]]).css('background','yellow');
+  sortRows();
   return true;
 }

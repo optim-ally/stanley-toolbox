@@ -1,35 +1,27 @@
 var attempts, emptyInRow, emptyInCol, emptyInBox, rowFixed, colFixed, boxFixed,
-    Nor, Wes, couldBe, indices = [], index,
-    full = [[1,2,3,4,5,6,7,8,9],[7,8,9,1,2,3,4,5,6],[4,5,6,7,8,9,1,2,3],
-            [9,1,2,3,4,5,6,7,8],[6,7,8,9,1,2,3,4,5],[3,4,5,6,7,8,9,1,2],
-            [8,9,1,2,3,4,5,6,7],[5,6,7,8,9,1,2,3,4],[2,3,4,5,6,7,8,9,1]];
+    Nor, Wes, couldBe, indices = [], index;
 
 
 $('#generate').click(function(){
   colourCells();
   if (!parseInput()) return;
   attempts = 0; generate();
-  console.log(attempts);
 });
 
 function generate() {
   clearGrid();
-  fillGrid();
+  refreshCounts();
+  states = [[1,2,3,4,5,6,7,8,9],[7,8,9,1,2,3,4,5,6],[4,5,6,7,8,9,1,2,3],
+            [9,1,2,3,4,5,6,7,8],[6,7,8,9,1,2,3,4,5],[3,4,5,6,7,8,9,1,2],
+            [8,9,1,2,3,4,5,6,7],[5,6,7,8,9,1,2,3,4],[2,3,4,5,6,7,8,9,1]];
   for (var i=0; i<81; i++) indices.push(i);
   for (var i=0; i<81; i++) {
     index = Math.floor(Math.random()*(81-i));
     tryRemove(indices[index]);
     indices.splice(index,1);
   }
-  if (!findInput() && attempts++ < 10) generate();
-}
-
-
-function fillGrid() {
-  states = [];
-  for (var i=0; i<9; i++) { states.push([]);
-    for (var j=0; j<9; j++) states[i].push(full[i][j]);
-  }
+  if (!findInput() && ++attempts < 1000) generate();
+  else if (attempts == 1000) alert('Haven\'t found one in 1000 trials, but you can keep trying');
 }
 
 
