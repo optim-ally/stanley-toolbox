@@ -23,13 +23,11 @@ $(function(){
 
   $('#grid-container').html(tableHTML);
 
-  $('#grid > tbody > tr > td').each(function(i){
-    $(this).css('background',(i%2)?'#FEE':'#F8F8FF');
-  });
-
   grid = $('#grid div').sort(function(a,b){
     return a.id.replace('box','') - b.id.replace('box','');
   });
+
+  colourCells();
 
 /*
   $('#grid div').keydown(function(e){
@@ -52,3 +50,14 @@ $(function(){
   });
 */
 });
+
+function colourCells() {
+  for (var i=0; i<81; i++)
+    $(grid[i]).css('background',(_((i%9)/3+_(i/27))%2)?'#FEE':'#F8F8FF');
+}
+
+function clearGrid() {
+  for (var i=0; i<81; i++) $(grid[i]).text('');
+}
+
+function _(x) { return Math.floor(x); }

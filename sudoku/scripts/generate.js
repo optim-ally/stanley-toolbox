@@ -1,4 +1,4 @@
-var emptyInRow, emptyInCol, emptyInBox, rowFixed, colFixed, boxFixed,
+var attempts, emptyInRow, emptyInCol, emptyInBox, rowFixed, colFixed, boxFixed,
     Nor, Wes, couldBe, indices = [], index,
     full = [[1,2,3,4,5,6,7,8,9],[7,8,9,1,2,3,4,5,6],[4,5,6,7,8,9,1,2,3],
             [9,1,2,3,4,5,6,7,8],[6,7,8,9,1,2,3,4,5],[3,4,5,6,7,8,9,1,2],
@@ -6,7 +6,14 @@ var emptyInRow, emptyInCol, emptyInBox, rowFixed, colFixed, boxFixed,
 
 
 $('#generate').click(function(){
+  colourCells();
   if (!parseInput()) return;
+  attempts = 0; generate();
+  console.log(attempts);
+});
+
+function generate() {
+  clearGrid();
   fillGrid();
   for (var i=0; i<81; i++) indices.push(i);
   for (var i=0; i<81; i++) {
@@ -14,7 +21,8 @@ $('#generate').click(function(){
     tryRemove(indices[index]);
     indices.splice(index,1);
   }
-});
+  if (!findInput() && attempts++ < 10) generate();
+}
 
 
 function fillGrid() {
@@ -22,9 +30,6 @@ function fillGrid() {
   for (var i=0; i<9; i++) { states.push([]);
     for (var j=0; j<9; j++) states[i].push(full[i][j]);
   }
-  for (var row=0; row<9; row++)
-  for (var col=0; col<9; col++)
-    $(grid[9*row+col]).text(encode[states[row][col]]);
 }
 
 
