@@ -16,4 +16,5 @@ body canvas {
 
 h2 { display: inline; }
 
+/* all 'redraw' buttons */
 button { font-size: 1.4em; }

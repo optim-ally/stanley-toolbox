@@ -1,46 +1,47 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="en">
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <title>Fractals</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 
-<body onload="drawBackground(1); drawBackground(2);
-              drawBackground(3); drawBackground(4);">
+<!-- onload functions are run from the backgrounds.js file, negating the need for page-specific javascript -->
+<body onload='drawBackground(1); drawBackground(2);
+              drawBackground(3); drawBackground(4);'>
     <div id=container>
         <main>
             <h1>Fractals</h1>
-            <div class="how-to">
+            <div class='how-to'>
                 <p>All fractals on this website have an element of randomness to them, so they will appear differently each time the page is loaded.</p>
                 <p>A setTimeout function, in which each line currently being drawn is overlaid by a slightly longer line, is looped hundreds of times to achieve an effect of gradual-expansion.</p><br/>
 
                 <h2>Binary Heather</h2>
-                <button onclick="redraw(1)">Redraw</button>
+                <button onclick='redraw(1)'>Redraw</button>
             </div>
-            <canvas id="bg-1" width="1280" height="800"></canvas>
-            <div class="how-to">
-                <p>This is the background of the website's home page. 10 binary trees (splitting immediately) are initialised radially from the centre at semi-random angles. Each completed branch sets off 2 new branches from its end, also at semi-random angles, up to a set depth-limit. The depth also determines the colour of the branches, changing from light- to dark-green and then to alternating pairs of pink and purple, while the length of each <b>green</b> branch is proportional to the distance from its base to the edge of the canvas, similar to Escher's <a href="http://mathstat.slu.edu/escher/index.php/Circle_Limit_Exploration">Circle Limits</a>.</p><br/>
+            <canvas id='bg-1' width='1280' height='800'></canvas>
+            <div class='how-to'>
+                <p>This is the background of the website's home page. 10 binary trees (splitting immediately) are initialised radially from the centre at semi-random angles. Each completed branch sets off 2 new branches from its end, also at semi-random angles, up to a set depth-limit. The depth also determines the colour of the branches, changing from light- to dark-green and then to alternating pairs of pink and purple, while the length of each <b>green</b> branch is proportional to the distance from its base to the edge of the canvas, similar to Escher's <a href='http://mathstat.slu.edu/escher/index.php/Circle_Limit_Exploration'>Circle Limits</a>.</p><br/>
 
                 <h2>Tartan Matrix</h2>
-                <button onclick="redraw(2)">Redraw</button>
+                <button onclick='redraw(2)'>Redraw</button>
             </div>
-            <canvas id="bg-2" width="1280" height="800"></canvas>
-            <div class="how-to">
+            <canvas id='bg-2' width='1280' height='800'></canvas>
+            <div class='how-to'>
                 <p>The background to the spell-checker pages, this one is shallower but has a higher branching factor. Branches only grow in the four cardinal directions and branch length is again proportional to the edge distance at its base. The colours are looped through as the lines are drawn, with some occasionally being hidden as they are simultaneously overlaid.</p><br/>
 
                 <h2>Limit Rings</h2>
-                <button onclick="redraw(3)">Redraw</button>
+                <button onclick='redraw(3)'>Redraw</button>
             </div>
-            <canvas id="bg-3" width="1280" height="800"></canvas>
-            <div class="how-to">
+            <canvas id='bg-3' width='1280' height='800'></canvas>
+            <div class='how-to'>
                 <p>A more bubbly backdrop for the distance calculator pages, this one is similar in underlying code to the home page background, but with a lower branching factor and depth. The randomness can be seen in the branching angles, with the size of each ring dependent on its distance from the canvas edge and the colours are looped through in each layer. The circles are drawn by slowly layering gradually larger arcs with a fixed midpoint and the half-fill effect is achieved by drawing lines to the diameter while the circle is being drawn. The curves to the fill boundaries were introduced entirely by accident by setting the initial angle of the arc midpoint to that intended for the parent ring (not quite an off-by-one error, but similar). The resulting figures resemble thorns on budding rose heads, so the bug was kept.</p><br/>
 
                 <h2>Crumpled Web</h2>
-                <button onclick="redraw(4)">Redraw</button>
+                <button onclick='redraw(4)'>Redraw</button>
             </div>
-            <canvas id="bg-4" width="1280" height="800"></canvas>
-            <div class="how-to">
+            <canvas id='bg-4' width='1280' height='800'></canvas>
+            <div class='how-to'>
                 <p>This angular pattern is used as the background for all of the origami pages. Each of its nodes is generated at a random offset from a preset grid point, giving the appearance of a creased piece of paper with its vertices moved only slightly out of place. It uses the same fill trick as 'Limit Rings', calling lineTo functions simultaneously in order to shade an area. The sparsity of the lines and use of cross-hatching produces varying intensities of colour in adjacent areas to further the illusion of crumpled paper.</p><br/>
 
                 <h2>Length of Code</h2>
@@ -49,12 +50,12 @@
         </main>
 
         <nav>
-            <a href="/index.html">&lt; Home</a>
+            <a href='/index.html'>&lt; Home</a>
         </nav>
     </div>
 </body>
 
-<script src="/backgrounds.js"></script>
-<link rel="stylesheet" href="/core.css">
-<link rel="stylesheet" href="style.css">
+<script src='/backgrounds.js'></script>
+<link rel='stylesheet' href='/core.css'>
+<link rel='stylesheet' href='style.css'>
 </html>
