@@ -1,3 +1,4 @@
+/* styles for input fields and dropdown suggestions */
 #inputs { margin-top: 3%; }
 #inputs > div {
     display: inline-block;
@@ -17,6 +18,7 @@
 #from *, #to * { display: inline; }
 #from br, #to br { display: none; }
 
+/* 'go' button */
 #inputs button {
     display: inline-block;
     margin-top: 4.5em;
@@ -25,6 +27,7 @@
     font-size: 1em;
 }
 
+/* further styles for dropdown suggestions */
 #from-suggestions, #to-suggestions { position: relative; top: .05em; }
 .from, .to {
     border-style: none solid solid;
@@ -40,6 +43,7 @@
     visibility: hidden;
 }
 
+/* text results */
 #info { margin-top: -13em; }
 #distance { margin-bottom: 2%; }
 #from-info, #to-info {
@@ -48,6 +52,7 @@
     margin: 0 2%;
 }
 
+/* image results (map) */
 img { width: 100%; }
 
 #map-plot {
