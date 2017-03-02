@@ -1,36 +1,36 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
-<html lang="en">
+<!DOCTYPE HTML PUBLIC '-//W3C//DTD HTML 4.01 Transitional//EN'>
+<html lang='en'>
 <head>
-    <meta charset="UTF-8">
+    <meta charset='UTF-8'>
     <title>Origami Simulator</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
 </head>
 
-<body onload="drawBackground(4); reset();">
-    <canvas id="bg-4" width="1280" height="800"></canvas>
+<body onload='drawBackground(4); reset();'>
+    <canvas id='bg-4' width='1280' height='800'></canvas>
 
     <div id=container>
         <main>
             <h1>2D Origami Simulator</h1>
-            <canvas id="canvas" width="800" height="800"></canvas>
-            <div id="blackdrop"><div id="message">Click and Drag</div></div>
-            <button onclick="reset();">Reset</button>
-            <button onclick="undo();" id="l-arrow">&nbsp;&lt;&nbsp;</button>
-            <button onclick="redo();" id="r-arrow">&nbsp;&gt;&nbsp;</button>
-            <button onclick="zoomIn();">Zoom +</button>
-            <button onclick="zoomOut();">&nbsp;–&nbsp;</button>
+            <canvas id='canvas' width='800' height='800'></canvas>
+            <div id='blackdrop'><div id='message'>Click and Drag</div></div>
+            <button onclick='reset();'>Reset</button>
+            <button onclick='undo();' id='l-arrow'>&nbsp;&lt;&nbsp;</button>
+            <button onclick='redo();' id='r-arrow'>&nbsp;&gt;&nbsp;</button>
+            <button onclick='zoomIn();'>Zoom +</button>
+            <button onclick='zoomOut();'>&nbsp;–&nbsp;</button>
         </main>
 
         <nav>
-            <a id="home" href="/index.html">&lt; Home</a>
+            <a id='home' href='/index.html'>&lt; Home</a>
             <p>|</p>
-            <a id="how-to" href="how-to.html">How it works &gt;</a>
+            <a id='how-to' href='how-to.html'>How it works &gt;</a>
         </nav>
     </div>
 </body>
 
-<script src="/backgrounds.js"></script>
-<script src="origami.js"></script>
-<link rel="stylesheet" href="/core.css">
-<link rel="stylesheet" href="style.css">
+<script src='/backgrounds.js'></script>
+<script src='origami.js'></script>
+<link rel='stylesheet' href='/core.css'>
+<link rel='stylesheet' href='style.css'>
 </html>
