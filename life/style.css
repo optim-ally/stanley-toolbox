@@ -5,54 +5,59 @@ h1 { font-size: 4vh; }
 p { font-size: 2.3vh; margin-top: 1vh; }
 
 canvas {
-    position: fixed;
-    top: 12vh;
-    left: 5%;
-    height: 72vh;
-    width: 90%;
-    border: solid #AAA 1px;
+  position: fixed;
+  top: 12vh;
+  left: 5%;
+  height: 72vh;
+  width: 90%;
+  border: solid #AAA 1px;
 }
 #grid {
-    background: white;
-    background: linear-gradient(135deg,white,#EEE);
+  background: white;
+  background: linear-gradient(135deg,white,#EEE);
 }
 #overlay { z-index: 1; }
 
 #speed {
-    position: fixed;
-    top: 85vh;
-    left: 20vw;
-    width: 60vw;
+  position: fixed;
+  top: 85vh;
+  left: 20vw;
+  width: 60vw;
 }
 #speed * { display: inline; }
 #speed p { position: relative; top: -3.5px; }
 input { width: 40vw; margin: 0 2vw;}
 
 #buttons {
-    position: fixed;
-    top: 89.5%;
-    left: 0;
-    width: 100%;
+  position: fixed;
+  top: 89.5%;
+  left: 0;
+  width: 100%;
 }
 
 button {
-    height: 9vh;
-    width: 15vw;
-    font-size: 2.7vh;
-    margin: -.8vh 1.6vw;
-    background-color: white
+  height: 9vh;
+  width: 15vw;
+  font-size: 2.7vh;
+  margin: -.8vh 1.6vw;
+  background-color: white
 }
 
 #message {
-    position: fixed;
-    top: 40vh;
-    left: 20vw;
-    width: 60vw;
-    padding: 4vh;
-    color: white;
-    background-color: #CCC;
-    border-radius: 3vw;
-    visibility: visible;
-    animation: fade-in reverse 3s;
-    animation-fill-mode: forwards;
+  position: fixed;
+  top: 32vh;
+  left: 20vw;
+  width: 60vw;
+  padding: 4vh;
+  color: white;
+  background-color: #CCC;
+  border-radius: 3vw;
+  visibility: visible;
+  z-index: 1;
+}
+#message button {
+  height: 5vh;
+  width: 8vh;
+  margin-top: 2vh;
+  border-radius: 1vh;
 }

@@ -1,15 +1,24 @@
 var gridSize = 200, pix = 1000/gridSize, mouse, pixScale = 20, gridOn = 1, index;
-    canvas = document.getElementById("board"), ctx = canvas.getContext("2d"),
-    grid = document.getElementById("grid"), ctxG = grid.getContext("2d"),
-    overlay = document.getElementById("overlay"), ctxO = overlay.getContext("2d"),
+    canvas = document.getElementById('board'), ctx = canvas.getContext('2d'),
+    grid = document.getElementById('grid'), ctxG = grid.getContext('2d'),
+    overlay = document.getElementById('overlay'), ctxO = overlay.getContext('2d'),
     rect = canvas.getBoundingClientRect();
 
-ctx.fillStyle = "#0DF";
-ctxG.strokeStyle = "#DDD";
+ctx.fillStyle = '#0DF';
+ctxG.strokeStyle = '#DDD';
 ctxG.lineWidth = 5;
-document.getElementById("toggleGrid").style.backgroundColor = "#BBB";
-ctxO.fillStyle = "#AAA";
-ctxO.strokeStyle = "#AAA";
+document.getElementById('toggleGrid').style.backgroundColor = '#BBB';
+ctxO.fillStyle = '#AAA';
+ctxO.strokeStyle = '#AAA';
+
+
+
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+// event listner to hide the starting instructions
+// ––––––––––––––––––––––––––––––––––––––––––––––––––
+document.getElementById('hide-message').onclick = function(){
+  document.getElementById('message').style.cssText = 'animation:fade-in reverse 1s; animation-fill-mode:forwards; z-index:0;';
+};
 
 
 
@@ -26,8 +35,8 @@ function z_Y( y ) { return (y-500)*pix/pixH+500; }
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 // listeners to draw or erase living cells on the grid
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
-overlay.addEventListener("mousedown",function(e){e.preventDefault(); adding(e);});
-overlay.addEventListener("mousemove",function(e){adding(e);});
+overlay.addEventListener('mousedown',function(e){e.preventDefault(); adding(e);});
+overlay.addEventListener('mousemove',function(e){adding(e);});
 
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 // function to create or kill a living cell
@@ -151,9 +160,9 @@ function updateGrid() {
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 // listeners to resize the grid
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
-overlay.addEventListener("mousewheel",function(e){updateZoom(e);});
-overlay.addEventListener("DOMMouseScroll",function(e){updateZoom(e);});
-window.addEventListener("resize",function(){updateZoom(0);});
+overlay.addEventListener('mousewheel',function(e){updateZoom(e);});
+overlay.addEventListener('DOMMouseScroll',function(e){updateZoom(e);});
+window.addEventListener('resize',function(){updateZoom(0);});
 
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 // function to zoom in and out on the grid
@@ -175,6 +184,6 @@ function updateZoom(e) {
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
 function toggleGrid() {
   gridOn = (gridOn)? false : true;
-  document.getElementById("toggleGrid").style.backgroundColor = (gridOn)? "#BBB":"white";
+  document.getElementById('toggleGrid').style.backgroundColor = (gridOn)? '#BBB':'white';
   updateGrid();
 }
