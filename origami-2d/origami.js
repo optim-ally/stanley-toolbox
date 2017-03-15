@@ -3,7 +3,9 @@ var polys, states, inState, newPoly, drag, zooming, lastNode, next, new1, new2,
     canvas = document.getElementById("canvas"), ctx = canvas.getContext("2d"),
     message = document.getElementById("message");
 
-ctx.lineWidth=1; ctx.strokeStyle="#555"; ctx.fillStyle="rgba(220,130,130,.5)";
+ctx.lineWidth = 1;
+ctx.strokeStyle = "#555";
+ctx.fillStyle = "rgba(220,130,130,.5)";
 
 
 // ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -47,6 +49,7 @@ function zoomIn() {
 function zoomOut() {
   drag=false;
   zooming=false;
+  message.style.visibility = "hidden";
   zoomedTo=[0,0,800];
   updateCanvas();
 }

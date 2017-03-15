@@ -1,4 +1,11 @@
-#message { padding-top: 6vh; }
+#message { padding-top: 6vh; visibility: visible; }
+
+img {
+  position: relative;
+  top: 1vw;
+  width: 2em;
+  transform: rotate(45deg);
+}
 
 button { padding: 1vw; font-size: 2vw; }
 
