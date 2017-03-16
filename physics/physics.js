@@ -241,25 +241,34 @@ function circle( x, y, radius, mass, restitution ) {
   // ––––––––––––––––––––––––––––––––––––––––––––––––––
   this.move = function(){
     if (this.beingDragged) {
-      this.newX = mouseX2-offsetX; this.newX = Math.min(this.newX,this.base);
-                                   this.newX = Math.max(this.newX,this.radius);
-      this.newY = mouseY2-offsetY; this.newY = Math.min(this.newY,this.base);
+      this.newX = mouseX2-offsetX;
+      this.newX = Math.min(this.newX,this.base);
+      this.newX = Math.max(this.newX,this.radius);
+      
+      this.newY = mouseY2-offsetY;
+      this.newY = Math.min(this.newY,this.base);
+      
       this.dx = this.newX-this.x;
       this.dy = this.newY-this.y;
+
+      this.newDX = this.dx;
+      this.newDY = this.dy; 
       return;
     }
     if (this.dy == 0 && this.dx == 0 && this.y == this.base) return;
 
     this.newX = this.x+this.dx;
-    this.dy += gravity/fps;  this.newY = this.y+this.dy/fps+gravity/2/fps/fps;
+    this.dy += gravity/fps;
+    this.newY = this.y+this.dy///fps+gravity/2/fps/fps;
+
+    this.newDX = this.dx;
+    this.newDY = this.dy;
   }
 
   // ––––––––––––––––––––––––––––––––––––––––––––––––––
   // function to model collisions with other shapes
   // ––––––––––––––––––––––––––––––––––––––––––––––––––
   this.collisions = function(i){
-    this.newDX = this.dx;
-    this.newDY = this.dy;
 
     for (var j=Number(i)+1; j<shapes.length; j++) {
       distX = shapes[j].x-this.x;  distXSq = distX*distX;
@@ -275,32 +284,48 @@ function circle( x, y, radius, mass, restitution ) {
           shapes[j].newX = shapes[j].x-edgeDist*distX/centreDist;
           shapes[j].newY = shapes[j].y-edgeDist*distY/centreDist; }
 
-        centreDistSq = centreDist*centreDist;
+        // normalise (distX, distY)
+        distXnorm = distX/centreDist;
+        distYnorm = distY/centreDist;
         // consider vectors parallel to the collision
-        // this. vectors are called 'a'; shapes[i]. are called 'b'
+        // this. vectors are called 'a'; shapes[j]. are called 'b'
         // PARA vectors as in 1-D collision; PERP vectors unaffected
-        paraX = (shapes[i].dx-this.dx)*distXSq/centreDistSq;
-        paraY = (shapes[i].dy-this.dy)*distYSq/centreDistSq;
+        paraLength = (shapes[j].dx-this.dx)*distXnorm + (shapes[j].dy-this.dy)*distYnorm;
+        paraX = paraLength*distXnorm;
+        paraY = paraLength*distYnorm;
 
-        if (!this.beingDragged) {
+        if (this.beingDragged) {
+          shapes[j].newDX -= 2*paraX*restitution;
+          shapes[j].newDY -= 2*paraY*restitution;
+        }
+        else if (shapes[j].beingDragged) {
+          this.newDX += 2*paraX*restitution;
+          this.newDY += 2*paraY*restitution;
+        }
+        else {
           this.newDX += paraX*restitution;
           this.newDY += paraY*restitution;
-        }
-        if (!shapes[j].beingDragged) {
-          shapes[i].newDX -= paraX*restitution;
-          shapes[i].newDY -= paraY*restitution;
+          shapes[j].newDX -= paraX*restitution;
+          shapes[j].newDY -= paraY*restitution;
         }
       }
     }
 
     if (this.newX > this.base) {
-      this.newX = this.base;   this.newDX *= -this.restitution; }
+      this.newX = this.base;
+      this.newDX *= -this.restitution;
+    }
     if (this.newX < this.radius) {
-      this.newX = this.radius; this.newDX *= -this.restitution; }
+      this.newX = this.radius;
+      this.newDX *= -this.restitution;
+    }
     if (this.newY == this.base)
       this.newDX = this.newDX*(1-(1-this.restitution)/15);
+    
     if (this.newY > this.base) {
-      this.newY = this.base;   this.newDY = -this.restitution*(this.newDY+Math.sqrt((this.base-this.y)*2*gravity)); }
+      this.newY = this.base;
+      this.newDY = -this.restitution*(this.newDY/*+Math.sqrt((this.base-this.y)*2*gravity)*/);
+    }
   }
 
   // ––––––––––––––––––––––––––––––––––––––––––––––––––
@@ -327,7 +352,10 @@ function circle( x, y, radius, mass, restitution ) {
 function ghostCircle( x, y, radius ) {
   this.x = x;
   this.y = y;
+  this.dx = 0;
+  this.dy = 0;
   this.radius = radius;
+  this.beingDragged = true;
   this.move = function() {};
   this.collisions = function() {};
   this.draw = function() {
